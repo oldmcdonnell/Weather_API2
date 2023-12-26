@@ -3,10 +3,11 @@ import pandas as pd
 
 app = Flask(__name__)
 
-variable = "example text"
+stations = pd.read_csv('data/stations.txt', skiprows=17)
+
 @app.route("/")
 def home():
-    return render_template("home.html", data=variable)
+    return render_template("home.html", data=stations.to_html())
 
 
 #get reading for different stations variable
