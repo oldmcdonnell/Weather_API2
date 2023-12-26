@@ -3,9 +3,10 @@ import pandas as pd
 
 app = Flask(__name__)
 
+variable = "example text"
 @app.route("/")
 def home():
-    return render_template("home.html")
+    return render_template("home.html", data=variable)
 
 
 #get reading for different stations variable
