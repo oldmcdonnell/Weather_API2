@@ -20,6 +20,16 @@ def about(station, date):
             "date": date,
             "temperature": temperature}
 
+
+@app.route("/api/v1/<station>")
+def all_data(station):
+    filename = "data/TG_STAID" + str(station).zfill(6) + ".txt"
+    df = pd.read_csv(filename, skiprows=20, parse_dates=['    DATE'])
+    result = df.to_dict(orient="records")
+    return result
+
+
+
 #only run flask script from the main page
 if __name__ == "__main__":
     app.run(debug=True)
